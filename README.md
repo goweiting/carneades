@@ -8,8 +8,8 @@ This is a pedagogically-oriented attempt to implement aspects of the [Carneades 
 
 ### Quick Link:
 Documentation for setting up:
-1. [on DICE machine](#setting-up-on-DICE)
-2. [on your own machine](#installing-carneades-on-your-own-computer)
+1. [on DICE machine](#setting-it-up-on-DICE)
+2. [on your own machine](#installation-on-your-own-computer)
 The main difference between them is the creation of python virtual environment.
 
 ### Requirements
@@ -30,7 +30,7 @@ S1987654: pyvenv ailp_env # create an python3.4 environment in the folder 'ailp_
 Activate the python environment (you have to activate the environment everytime before you run Carneades):
 ```
 S1987654: source ailp_env/bin/activate
-# Once the environment is activate, you should see it the name of the environment beside it:
+# Once the environment is activate, you should see the name of the environment beside it:
 (ailp_env) S1987654:
 ```
 
@@ -39,7 +39,7 @@ Similar to installing on your own computer, you need to install the libraries re
 
 
 
-### Installation on your own computer
+## Installation on your own computer
 
 #### Install `python3.4` (via apt, homebrew or your favourite package_system)
 
