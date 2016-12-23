@@ -2,11 +2,15 @@
 
 This is a pedagogically-oriented attempt to implement aspects of the [Carneades Argument Evaluation framework](http://carneades.github.io/carneades/Carneades/). It closely follows the Haskell implementation in the [CarneadesDSL package](https://hackage.haskell.org/package/CarneadesDSL).
 
-The libraries needed to run this code on DICE are already available (except that the plotting functionality is currently not supported). Just remember that you need to explicitly call `python3.4` since the `python` command on DICE defaults to `python2.7`. So if you are happy to work on DICE, you are ready to go. :smile:
+<!-- The libraries needed to run this code on DICE are already available (except that the plotting functionality is currently not supported). Just remember that you need to explicitly call `python3.4` since the `python` command on DICE defaults to `python2.7`. So if you are happy to work on DICE, you are ready to go. :smile: -->
 
-If you want to install the necessary libraries on your own machine, however, read on.
 
-## Installing the libraries for the Carneades sample code on your own computer
+
+### Quick Link:
+Documentation for setting up:
+1. [on DICE machine](#setting-up-on-DICE)
+2. [on your own machine](#installing-carneades-on-your-own-computer)
+The main difference between them is the creation of python virtual environment.
 
 ### Requirements
 
@@ -17,7 +21,25 @@ If you want to install the necessary libraries on your own machine, however, rea
 - Sphinx (docs only)
 - Basicstrap theme for sphinx (docs only)
 
-### Installation
+## Setting it up on DICE
+###Creating python virtual environment
+Create a python3.4 virtual environment:
+```$
+S1987654: pyvenv ailp_env # create an python3.4 environment in the folder 'ailp_env'
+```
+Activate the python environment (you have to activate the environment everytime before you run Carneades):
+```
+S1987654: source ailp_env/bin/activate
+# Once the environment is activate, you should see it the name of the environment beside it:
+(ailp_env) S1987654:
+```
+
+### Installing libraries:
+Similar to installing on your own computer, you need to install the libraries required. However, there is no need to set up the virutal environment again. I.e. follow the instructions from [installing sphinx](#install-sphinx-and-basicstrap) to [installing pycairo](#install-pycairo)
+
+
+
+### Installation on your own computer
 
 #### Install `python3.4` (via apt, homebrew or your favourite package_system)
 
@@ -71,9 +93,7 @@ $ sudo ldconfig # this does some magic!
 
 #### Install pycairo
 
-On Ubuntu, check this [package](http://packages.ubuntu.com/search?keywords=python-cairo).<br>
-_By default this will install the package into `python` (which may not be `python3.4`)_<br>
-_(TODO: will this still work??))_
+On Ubuntu, check this [package](http://packages.ubuntu.com/search?keywords=python-cairo).
 
 If you are using a virtualenv or you don't use Ubuntu, do the following:
 
@@ -190,19 +210,17 @@ Now follow the rest of the installation.
 
 ### Work around for `pycairo` and `igraph`
 
-For output where the graphs are not shown (such as on DICE), a workaround to produce the graph. Thanks to the `write_to_graphviz` method, a `.dot` file will be produced whenever you run `caes.py`. This `.dot` file can then be visualised using a Graphiviz viewer, such as:
+For output where the graphs are not shown, here is a workaround to produce the graph. Thanks to the `write_to_graphviz` method, a `.dot` file will be produced whenever you run `caes.py`. This `.dot` file can then be visualised using a Graphiviz viewer, such as:
 
 - <http://www.webgraphviz.com/>
 - <http://sandbox.kidstrythisathome.com/erdos/>
 - <http://dreampuf.github.io/GraphvizOnline/>
 
-The `.dot` file is by default `graph.dot`. It will be good to rename each caes example with a different filename to prevent it being overwritten in future iteration of `caes.py`.
+The `.dot` file is by default `graph.dot`. It will be good to rename each caes example with a different filename to prevent it being overwritten in future iterations of `caes.py`.
 
 ```bash
 # In caes.py, e.g. in def arg_demo(), change the following line to define the filename
 >> argset.draw()
 >> argset.write_to_graphviz(<filename>.dot)
 ```
-The `<filename>.dot` file will be found adjacent to the `caes.py` file. (defaul in `$PATH_TO_/carneades/src/carneades`).
-
-TODO: more work to be done to verify if there's a work around using `pycairo` or `igraph`. For now, these packages are still required.
+The `<filename>.dot` file will be found adjacent to the `caes.py` file. (defaul in `$PATH_TO_CARNEADES/carneades/src/carneades`).
